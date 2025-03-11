@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
 interface Props {
@@ -6,8 +7,10 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
     return (
-        <div className={className}>
-
-        </div>
+        <header className={cn("border border-b", className)}>
+            <div>
+                
+            </div>
+        </header>
     );
 };
