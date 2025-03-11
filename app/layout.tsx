@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import './globals.css';
+import Head from 'next/head';
+import { Header } from '@/components/shared/header';
 
 // The Nunito font is loaded from Google Fonts with the specified
 // weights and subsets. The font is then applied to the body element
@@ -29,7 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <main className='min-h-screen'>{children}</main>
+        <main className='min-h-screen'>
+          <Header />
+          {children}
+          </main>
       </body>
     </html>
   );
