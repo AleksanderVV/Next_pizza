@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import './globals.css';
-import Head from 'next/head';
-import { Header } from '@/components/shared/header';
+import { Header } from '@/components/shared';
 
 // The Nunito font is loaded from Google Fonts with the specified
 // weights and subsets. The font is then applied to the body element
