@@ -8,6 +8,7 @@ export default function Home() {
         <Title text="All pizzas" size="lg" className="font-extrabold" />
       </Container>
       <TopBar />
+      <div style={{height: "3000px"}}></div>
     </>
   );
 }
