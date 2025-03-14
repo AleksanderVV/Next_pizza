@@ -11,8 +11,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
         <div className={className}>
             <Title text="Filters" size="sm" className="mb-5 font-bold" />
             <div className="flex flex-col gap-4">
-                <FilterCheckbox text="Collect" value="1" />
-                <FilterCheckbox text="New products" value="1" />
+                <FilterCheckbox text="Create your pizza" value="1" />
+                <FilterCheckbox text="New products" value="2" />
             </div>
         </div>
     )
