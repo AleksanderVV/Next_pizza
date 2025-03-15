@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Title, FilterCheckbox } from "./index";
+import { Title, FilterCheckbox, CheckboxFiltersGroup } from "./index";
 import { Input, RangeSlider } from "../ui";
 
 interface Props {
@@ -25,6 +25,86 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 </div>
                 <RangeSlider min={0} max={30000} step={10} value={[0,30000]} />
             </div>
+
+            <CheckboxFiltersGroup 
+                title="Ingredients"
+                className="mt-5"
+                limit={6}
+                defaultItems={[
+                    {
+                        text: 'Cheese souse',
+                        value: '1',
+                      },
+                      {
+                        text: 'Motsarella',
+                        value: '2',
+                      },
+                      {
+                        text: 'Garlic',
+                        value: '3',
+                      },
+                      {
+                        text: 'Salt Cucumbers',
+                        value: '4',
+                      },
+                      {
+                        text: 'Red Onions',
+                        value: '5',
+                      },
+                      {
+                        text: 'Tomatoes',
+                        value: '6',
+                      },
+                ]}
+                items={[
+                    {
+                      text: 'Cheese souse',
+                      value: '1',
+                    },
+                    {
+                      text: 'Motsarella',
+                      value: '2',
+                    },
+                    {
+                      text: 'Garlic',
+                      value: '3',
+                    },
+                    {
+                      text: 'Salt Cucumbers',
+                      value: '4',
+                    },
+                    {
+                      text: 'Red Onions',
+                      value: '5',
+                    },
+                    {
+                      text: 'Tomatoes',
+                      value: '6',
+                    },
+                    {
+                      text: 'Mushrooms',
+                      value: '1',
+                    },
+                    {
+                      text: 'Sausages',
+                      value: '2',
+                    },
+                    {
+                      text: 'Olives',
+                      value: '3',
+                    },
+                    {
+                      text: 'Corn',
+                      value: '4',
+                    },
+                    {
+                      text: 'Pineapple',
+                      value: '5',
+                    },
+                  ]
+
+                }
+            />
         </div>
     )
 }
