@@ -1,6 +1,4 @@
-import { Container, Title, TopBar, Filters } from "@/components/shared";
-import { ProductCard } from "@/components/shared/product-card";
-
+import { Container, Title, TopBar, Filters, ProductsGroupList } from "@/components/shared";
 
 export default function Home() {
   return (
@@ -18,13 +16,148 @@ export default function Home() {
 
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-                
-                <ProductCard 
-                  id={0}
-                  name="Margarita" 
-                  imageUrl="https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp" 
-                  price={390} 
-                />
+                <ProductsGroupList title="Popular pizzas" items={[
+                  {
+                    id: 1,
+                    name: "Hawaiian Pizza",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                  {
+                    id: 2,
+                    name: "Hawaiian Pizza",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                  {
+                    id: 3,
+                    name: "Hawaiian Pizza",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                ]} />
+
+                <ProductsGroupList title="New pizzas" items={[
+                  {
+                    id: 1,
+                    name: "Hawaiian Pizza",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                  {
+                    id: 2,
+                    name: "Hawaiian Pizza",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                  {
+                    id: 3,
+                    name: "Hawaiian Pizza",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  }
+                ]} />
+                <ProductsGroupList title="Burgers" items={[
+                  {
+                    id: 1,
+                    name: "Burger Polo",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/DSC_07855_50a520b0c2.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                  {
+                    id: 2,
+                    name: "Burger Polo",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/DSC_07855_50a520b0c2.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  },
+                  {
+                    id: 3,
+                    name: "Burger Polo",
+                    imageUrl: "https://adminbm.kharkiv.ua/uploads/DSC_07855_50a520b0c2.webp",
+                    items: [
+                      {
+                        id: 1,
+                        price: 390
+                      },
+                      {
+                        id: 2,
+                        price: 450
+                      }
+                    ],
+                  }  
+                ]} />
             </div>
           </div>
 
