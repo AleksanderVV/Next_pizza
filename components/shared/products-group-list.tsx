@@ -16,6 +16,7 @@ interface Props {
 }
 
 export const ProductsGroupList: React.FC<Props> = ({ title, items, categoryId, className, listClassName }) => {
+
     
     const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
     const intersectionRef = React.useRef(null);

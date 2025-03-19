@@ -18,6 +18,14 @@ const cats = [
     { id: 7, name: 'Desserts' },
 ];
 
+const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
 export const Categories: React.FC<Props> = ({ className }) => {
 
     const categoryActiveId = useCategoryStore((state) => state.activeId);
@@ -27,9 +35,12 @@ export const Categories: React.FC<Props> = ({ className }) => {
            {cats.map(({ name, id }, index) => (
                 <a className={cn(
                     'flex items-center font-bold h-11 rounded-2xl px-5',
-                    categoryActiveId === index + 1 && 'bg-white shadow-md shadow-gray-300 text-primary'
-                )} key={index}>
-                    <button>{name}</button>
+                    categoryActiveId === index + 1 && 'bg-white shadow-md shadow-gray-300 text-primary')} 
+                    key={id}
+                    href={`/#${name}`} 
+                    onClick={(e) => smoothScroll(e, name)}
+                >
+                    {name}
                 </a>
             ))}
         </div>
