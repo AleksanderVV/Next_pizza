@@ -82,7 +82,7 @@ model Ingredient {
 model Cart {
   id       Int     @id @default(autoincrement())
 
-  user User? @@relation(fields: [userId], references: [id])
+  user User? @relation(fields: [userId], references: [id])
   userId Int? @unique
 
   items CartItem[]
@@ -115,7 +115,7 @@ model CartItem {
 model Order {
   id       Int     @id @default(autoincrement())
 
-  user User @relation(fields: [userId], references: [id])
+  user User? @relation(fields: [userId], references: [id])
   userId Int?
 
   token String
