@@ -8,6 +8,7 @@ export async function GET() {
     return NextResponse.json({
         users
     })
+
 }
 
 export async function POST(req: NextRequest) {

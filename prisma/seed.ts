@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { hashSync } from "bcrypt";
+import { categories } from "./constants";
 
 const prisma = new PrismaClient();
 
@@ -22,7 +23,13 @@ async function up() {
             }
         ]
     })
+
+    await prisma.category.createMany({
+        data: categories,
+    })
+
 }
+
 
 async function down() {
     await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
