@@ -119,37 +119,43 @@ export const ingredients = [
     },
 ]
 
-export const pizzas = [
+
+export const products = [
     {   name: 'Bella Stracciatella',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09573_05b9f4a940.webp',
         categoryId: 1,
-        connect: [{id: 1}, {id: 2}, {id: 3}]
+        ingredients: {
+            connect: [{id: 1}, {id: 2}, {id: 3}]   
+        }
     },
     {
         name: 'Feta Pollo',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09556_7f4272c023.webp',
         categoryId: 1,
-        connect: [{id: 2}, {id: 4}, {id: 5}, {id: 8}, {id: 10}]
+        ingredients: {
+            connect: [{id: 2}, {id: 4}, {id: 5}, {id: 8}, {id: 10}]
+        }
     },
     {
         name: 'Jalapeno Pepper',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09531_1dc1010755.webp',
         categoryId: 1,
-        connect: [{id: 1}, {id: 3}, {id: 10}, {id: 11}, {id: 13}]
+        ingredients: {
+            connect: [{id: 1}, {id: 3}, {id: 10}, {id: 11}, {id: 13}]
+        }
     },
     {
         name: 'Fungo Miscela',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09520_33116f92a8.webp',
         categoryId: 1,
-        connect: [{id: 3}, {id: 10}, {id: 14}, {id: 15}]
+        ingredients: {
+            connect: [{id: 3}, {id: 10}, {id: 14}, {id: 15}]
+        }
     },
-]
-
-export const products = [
     {   name: '3 pizzas',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/3_24_96a50c6408_5522128378.webp',

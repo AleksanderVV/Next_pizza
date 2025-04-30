@@ -1,8 +1,23 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import { hashSync } from "bcrypt";
-import { categories, ingredients, products, pizzas } from "./constants";
+import { categories, ingredients, products } from "./constants";
 
 const prisma = new PrismaClient();
+
+const randomDecimalNumber = (max: number, min: number) => Math.floor(Math.random() * (max - min) * 10  + min * 10) / 10;
+
+const generatePizza = (
+    productId: number,
+    pizzaType?: number,
+    size?: number
+) => {
+    return {
+        productId,
+        price: randomDecimalNumber(190, 600),
+        pizzaType,
+        size
+    } as Prisma.ProductItemUncheckedCreateInput;
+}
 
 async function up() {
     await prisma.user.createMany({
@@ -33,11 +48,27 @@ async function up() {
     })
 
     await prisma.product.createMany({
-        data: pizzas,
+        data: products,
     })
 
-    await prisma.product.createMany({
-        data: products,
+    await prisma.productItem.createMany({
+        data: [
+            generatePizza(1, 1, 20),
+            generatePizza(1, 2, 30),
+            generatePizza(1, 3, 40),
+
+            generatePizza(2, 1, 20),
+            generatePizza(2, 2, 30),
+            generatePizza(2, 3, 40),
+
+            generatePizza(3, 1, 20),
+            generatePizza(3, 2, 30),
+            generatePizza(3, 3, 40),
+
+            generatePizza(4, 1, 20),
+            generatePizza(4, 2, 30),
+            generatePizza(4, 3, 40),
+        ],
     })
 
 }
@@ -45,6 +76,10 @@ async function up() {
 
 async function down() {
     await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "Category" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {
