@@ -14,131 +14,142 @@ export const ingredients = [
         price: 179,
         imageUrl:
           'https://cdn.dodostatic.net/static/Img/Ingredients/99f5cb91225b4875bd06a26d2e842106.png',
-      },
-      {
+    },
+    {
         name: 'Creamy mozzarella',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/cdea869ef287426386ed634e6099a5ba.png',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/cdea869ef287426386ed634e6099a5ba.png',
+    },
+    {
         name: 'Cheddar and Parmesan cheeses',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796',
+    },
+    {
         name: 'Hot Jalapeno Pepper',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/11ee95b6bfdf98fb88a113db92d7b3df.png',
-      },
-      {
+            'https://cdn.dodostatic.net/static/Img/Ingredients/11ee95b6bfdf98fb88a113db92d7b3df.png',
+    },
+    {
         name: 'Tender Chicken',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A',
+    },
+    {
         name: 'Champignons',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA67259A324',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA67259A324',
+    },
+    {
         name: 'Bacon',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA637AAB68F',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA637AAB68F',
+    },
+    {
         name: 'Ham',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA61B9A8D61',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA61B9A8D61',
+    },
+    {
         name: 'Spicy pepperoni',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA6258199C3',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA6258199C3',
+    },
+    {
         name: 'Spicy Chorizo',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA62D5D6027',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA62D5D6027',
+    },
+    {
         name: 'Pickled cucumbers',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9EA89958D782B',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9EA89958D782B',
+    },
+    {
         name: 'Fresh tomatoes',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA7AC1A1D67',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA7AC1A1D67',
+    },
+    {
         name: 'Red onion',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA60AE6464C',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA60AE6464C',
+    },
+    {
         name: 'Juicy pineapples',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9AFA6795BA2A0',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9AFA6795BA2A0',
+    },
+    {
         name: 'Italian herbs',
         price: 39,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/370dac9ed21e4bffaf9bc2618d258734.png',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/370dac9ed21e4bffaf9bc2618d258734.png',
+    },
+    {
         name: 'Sweet pepper',
         price: 59,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA63F774C1B',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA63F774C1B',
+    },
+    {
         name: 'Cubes of feta cheese',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA6B0FFC349',
-      },
-      {
+        'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA6B0FFC349',
+    },
+    {
         name: 'Meatballs',
         price: 79,
         imageUrl:
-          'https://cdn.dodostatic.net/static/Img/Ingredients/b2f3a5d5afe44516a93cfc0d2ee60088.png',
-      },
+        'https://cdn.dodostatic.net/static/Img/Ingredients/b2f3a5d5afe44516a93cfc0d2ee60088.png',
+    },
 ]
 
-export const products = [
+export const pizzas = [
     {   name: 'Bella Stracciatella',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09573_05b9f4a940.webp',
-        categoryId: 1},
+        categoryId: 1,
+        connect: [{id: 1}, {id: 2}, {id: 3}]
+    },
     {
         name: 'Feta Pollo',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09556_7f4272c023.webp',
-        categoryId: 1},
+        categoryId: 1,
+        connect: [{id: 2}, {id: 4}, {id: 5}, {id: 8}, {id: 10}]
+    },
     {
         name: 'Jalapeno Pepper',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09531_1dc1010755.webp',
-        categoryId: 1},
+        categoryId: 1,
+        connect: [{id: 1}, {id: 3}, {id: 10}, {id: 11}, {id: 13}]
+    },
     {
         name: 'Fungo Miscela',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09520_33116f92a8.webp',
-        categoryId: 1},
+        categoryId: 1,
+        connect: [{id: 3}, {id: 10}, {id: 14}, {id: 15}]
+    },
+]
+
+export const products = [
     {   name: '3 pizzas',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/3_24_96a50c6408_5522128378.webp',
