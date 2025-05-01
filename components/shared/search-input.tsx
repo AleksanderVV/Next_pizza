@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Api } from "@/services/api-client";
+import { Product } from "@prisma/client";
 import { Search } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -11,12 +13,18 @@ interface Props {
 }
 
 export const SearchInput: React.FC<Props> = ({ className }) => {
+    const [searchQuery, setSearchQuery] = React.useState("");
     const [focused, setFocused] = React.useState(false);
+    const [products, setProducts] = React.useState<Product[]>([]);
     const ref = React.useRef(null);
 
     useClickAway(ref, () => {
         setFocused(false);
     });
+
+    React.useEffect(() => {
+        Api.products.search(searchQuery).then(items => setProducts(items));
+    }, [searchQuery]);
 
     return (
         <>
@@ -29,15 +37,25 @@ export const SearchInput: React.FC<Props> = ({ className }) => {
                     type="text" 
                     placeholder="Find pizza..."
                     onFocus={() => setFocused(true)}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                 />
 
                 <div className={cn("absolute w-full bg-white rounded-2xl py-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30", focused && "visible opacity-100 top-12")}>
-                    <Link className="flex items-center gap-3 px-3 py-2 hover:bg-primary/10" href="/product/1">
-                        <img className="rounded-sm h-8 w-8" src="https://adminbm.kharkiv.ua/uploads/DSC_09531_1dc1010755.webp" alt="Pizza 1" />
-                        <span>
-                            Pizza 1
-                        </span>
-                    </Link>
+                    {products.map((product) => (
+                        <Link 
+                            key={product.id} 
+                            className="flex items-center gap-3 px-3 py-2 hover:bg-primary/10" 
+                            href={`/products/${product.id}`}>
+                            <img 
+                                className="rounded-sm h-8 w-8" 
+                                src={product.imageUrl} 
+                                alt={product.name} />
+                            <span>
+                                {product.name}
+                            </span>
+                        </Link>
+                    ))}
                 </div>
         </div>
         </>
