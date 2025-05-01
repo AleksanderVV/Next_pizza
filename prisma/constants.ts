@@ -125,36 +125,28 @@ export const products = [
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09573_05b9f4a940.webp',
         categoryId: 1,
-        ingredients: {
-            connect: [{id: 1}, {id: 2}, {id: 3}]   
-        }
+        ingredientIds: [1,2,3,4,5,6,7,8]
     },
     {
         name: 'Feta Pollo',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09556_7f4272c023.webp',
         categoryId: 1,
-        ingredients: {
-            connect: [{id: 2}, {id: 4}, {id: 5}, {id: 8}, {id: 10}]
-        }
+        ingredientIds: [1,2,3,4,5,6,7,8,9,10]
     },
     {
         name: 'Jalapeno Pepper',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09531_1dc1010755.webp',
         categoryId: 1,
-        ingredients: {
-            connect: [{id: 1}, {id: 3}, {id: 10}, {id: 11}, {id: 13}]
-        }
+        ingredientIds: [1,2,3,4,5,6,7,8,9,10,11]
     },
     {
         name: 'Fungo Miscela',
         imageUrl:
             'https://adminbm.kharkiv.ua/uploads/DSC_09520_33116f92a8.webp',
         categoryId: 1,
-        ingredients: {
-            connect: [{id: 3}, {id: 10}, {id: 14}, {id: 15}]
-        }
+        ingredientIds: [1,2,3,4,5,6,7,8,9,10,11,12]
     },
     {   name: '3 pizzas',
         imageUrl:

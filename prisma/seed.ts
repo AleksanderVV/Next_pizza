@@ -47,9 +47,18 @@ async function up() {
         data: ingredients,
     })
 
-    await prisma.product.createMany({
-        data: products,
-    })
+    for (const product of products) {
+        await prisma.product.create({
+          data: {
+            name: product.name,
+            imageUrl: product.imageUrl,
+            categoryId: product.categoryId,
+            ingredients: {
+              connect: product.ingredientIds?.map(id => ({ id }))
+            }
+          }
+        })
+      }
 
     await prisma.productItem.createMany({
         data: [
