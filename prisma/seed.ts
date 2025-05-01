@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 const randomDecimalNumber = (max: number, min: number) => Math.floor(Math.random() * (max - min) * 10  + min * 10) / 10;
 
-const generatePizza = (
+const generateProductItem = (
     productId: number,
     pizzaType?: number,
     size?: number
@@ -62,21 +62,46 @@ async function up() {
 
     await prisma.productItem.createMany({
         data: [
-            generatePizza(1, 1, 20),
-            generatePizza(1, 2, 30),
-            generatePizza(1, 3, 40),
+            generateProductItem(1, 1, 20),
+            generateProductItem(1, 2, 30),
+            generateProductItem(1, 3, 40),
 
-            generatePizza(2, 1, 20),
-            generatePizza(2, 2, 30),
-            generatePizza(2, 3, 40),
+            generateProductItem(2, 1, 20),
+            generateProductItem(2, 2, 30),
+            generateProductItem(2, 3, 40),
 
-            generatePizza(3, 1, 20),
-            generatePizza(3, 2, 30),
-            generatePizza(3, 3, 40),
+            generateProductItem(3, 1, 20),
+            generateProductItem(3, 2, 30),
+            generateProductItem(3, 3, 40),
 
-            generatePizza(4, 1, 20),
-            generatePizza(4, 2, 30),
-            generatePizza(4, 3, 40),
+            generateProductItem(4, 1, 20),
+            generateProductItem(4, 2, 30),
+            generateProductItem(4, 3, 40),
+
+            generateProductItem(5),
+            generateProductItem(6),
+            generateProductItem(7),
+            generateProductItem(8),
+            generateProductItem(9),
+            generateProductItem(10),
+            generateProductItem(11),
+            generateProductItem(12),
+            generateProductItem(13),
+            generateProductItem(14),
+            generateProductItem(15),
+            generateProductItem(16),
+            generateProductItem(17),
+            generateProductItem(18),
+            generateProductItem(19),
+            generateProductItem(20),
+            generateProductItem(21),
+            generateProductItem(22),
+            generateProductItem(23),
+            generateProductItem(24),
+            generateProductItem(25),
+            generateProductItem(26),
+            generateProductItem(27),
+            generateProductItem(28),
         ],
     })
 
