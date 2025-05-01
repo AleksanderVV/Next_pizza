@@ -1,6 +1,7 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import { hashSync } from "bcrypt";
 import { categories, ingredients, products } from "./constants";
+import { connect } from "http2";
 
 const prisma = new PrismaClient();
 
@@ -105,6 +106,33 @@ async function up() {
         ],
     })
 
+    await prisma.cart.createMany({
+        data: [
+            {
+                userId: 1,
+                totalAmount: 0,
+                token: '1111',
+            },
+            {
+                userId: 2,
+                totalAmount: 0,
+                token: '2222',
+            }
+        ]
+    })
+
+    await prisma.cartItem.create({
+        data: 
+            {
+                productItemId: 1,
+                cartId: 1,
+                quantity: 2,
+                ingredients: {
+                    connect: [ { id: 1 }, { id: 2 } ]
+                }
+            }
+    })
+
 }
 
 
@@ -114,6 +142,8 @@ async function down() {
     await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
     await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
     await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {
