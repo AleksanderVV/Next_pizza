@@ -12,7 +12,7 @@ interface Props {
 
 export const Filters: React.FC<Props> = ({ className }) => {
 
-      const {ingredients, loading} = useFilterIngredients();
+      const {ingredients, loading, onAddId, selectedIds} = useFilterIngredients();
 
       // console.log(ingredients);
 
@@ -23,8 +23,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
             <Title text="Filters" size="sm" className="mb-5 font-bold" />
 
             <div className="flex flex-col gap-4">
-                <FilterCheckbox text="Create your pizza" value="1" />
-                <FilterCheckbox text="New products" value="2" />
+                <FilterCheckbox name="name" text="Create your pizza" value="1" />
+                <FilterCheckbox name="name" text="New products" value="2" />
             </div>
 
             <div className="mt-5 border-y border-y-neutral-100 pt-6 pb-7">
@@ -38,11 +38,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
             <CheckboxFiltersGroup 
                 title="Ingredients"
+                name="ingredients"
                 className="mt-5"
                 limit={6}
                 defaultItems={items.slice(0,6)}
                 items={items}
                 loading={loading}
+                onClickCheckbox={onAddId}
+                selectedIds={selectedIds}
             />
         </div>
     )
