@@ -12,7 +12,7 @@ interface Props {
 
 export const Filters: React.FC<Props> = ({ className }) => {
 
-      const {ingredients} = useFilterIngredients();
+      const {ingredients, loading} = useFilterIngredients();
 
       // console.log(ingredients);
 
@@ -42,6 +42,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 limit={6}
                 defaultItems={items.slice(0,6)}
                 items={items}
+                loading={loading}
             />
         </div>
     )
