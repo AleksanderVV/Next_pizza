@@ -1,13 +1,23 @@
+'use client'
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Title, FilterCheckbox, CheckboxFiltersGroup } from "./index";
 import { Input, RangeSlider } from "../ui";
+import { useFilterIngredients } from "@/hooks/useFilterIngredients";
 
 interface Props {
     className?: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
+
+      const {ingredients} = useFilterIngredients();
+
+      // console.log(ingredients);
+
+      const items = ingredients.map(item => ({value: String(item.id), text: String(item.name)}));
+
     return (
         <div className={className}>
             <Title text="Filters" size="sm" className="mb-5 font-bold" />
@@ -30,80 +40,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 title="Ingredients"
                 className="mt-5"
                 limit={6}
-                defaultItems={[
-                    {
-                        text: 'Cheese souse',
-                        value: '1',
-                      },
-                      {
-                        text: 'Motsarella',
-                        value: '2',
-                      },
-                      {
-                        text: 'Garlic',
-                        value: '3',
-                      },
-                      {
-                        text: 'Salt Cucumbers',
-                        value: '4',
-                      },
-                      {
-                        text: 'Red Onions',
-                        value: '5',
-                      },
-                      {
-                        text: 'Tomatoes',
-                        value: '6',
-                      },
-                ]}
-                items={[
-                    {
-                      text: 'Cheese souse',
-                      value: '1',
-                    },
-                    {
-                      text: 'Motsarella',
-                      value: '2',
-                    },
-                    {
-                      text: 'Garlic',
-                      value: '3',
-                    },
-                    {
-                      text: 'Salt Cucumbers',
-                      value: '4',
-                    },
-                    {
-                      text: 'Red Onions',
-                      value: '5',
-                    },
-                    {
-                      text: 'Tomatoes',
-                      value: '6',
-                    },
-                    {
-                      text: 'Mushrooms',
-                      value: '1',
-                    },
-                    {
-                      text: 'Sausages',
-                      value: '2',
-                    },
-                    {
-                      text: 'Olives',
-                      value: '3',
-                    },
-                    {
-                      text: 'Corn',
-                      value: '4',
-                    },
-                    {
-                      text: 'Pineapple',
-                      value: '5',
-                    },
-                  ]
-
-                }
+                defaultItems={items.slice(0,6)}
+                items={items}
             />
         </div>
     )
