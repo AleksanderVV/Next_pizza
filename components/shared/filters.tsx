@@ -18,8 +18,9 @@ interface PriceProps {
 
 export const Filters: React.FC<Props> = ({ className }) => {
 
-      const {ingredients, loading, onAddId, selectedIds} = useFilterIngredients();
+      const {ingredients, loading, onAddId, selectedIngredients} = useFilterIngredients();
       const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
+      const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>([]));
       const [prices, setPrice] = React.useState<PriceProps>({priceFrom: 0, priceTo: 1000});
 
       const items = ingredients.map(item => ({value: String(item.id), text: String(item.name)}));
@@ -28,9 +29,25 @@ export const Filters: React.FC<Props> = ({ className }) => {
           setPrice({...prices, [name]: value});
       }
 
+      React.useEffect(() => {
+          console.log({prices, pizzaTypes, selectedIngredients, sizes});
+      }, [prices, pizzaTypes, selectedIngredients, sizes]);
+
     return (
         <div className={className}>
             <Title text="Filters" size="sm" className="mb-5 font-bold" />
+
+            <CheckboxFiltersGroup 
+                title="Pizza types"
+                name="pizzaTypes"
+                className="mb-5"
+                onClickCheckbox={togglePizzaTypes}
+                selected={pizzaTypes}
+                items={[
+                    {text: 'Thin dough', value: '1'},
+                    {text: 'Classic dough', value: '2'},
+                ]}
+            />
 
             <CheckboxFiltersGroup 
                 title="Sizes"
@@ -80,7 +97,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 items={items}
                 loading={loading}
                 onClickCheckbox={onAddId}
-                selected={selectedIds}
+                selected={selectedIngredients}
             />
         </div>
     )
