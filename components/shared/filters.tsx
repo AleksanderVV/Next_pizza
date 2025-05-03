@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Title, FilterCheckbox, CheckboxFiltersGroup } from "./index";
 import { Input, RangeSlider } from "../ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
+import { useSet } from "react-use";
 
 interface Props {
     className?: string;
@@ -18,6 +19,7 @@ interface PriceProps {
 export const Filters: React.FC<Props> = ({ className }) => {
 
       const {ingredients, loading, onAddId, selectedIds} = useFilterIngredients();
+      const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
       const [prices, setPrice] = React.useState<PriceProps>({priceFrom: 0, priceTo: 1000});
 
       const items = ingredients.map(item => ({value: String(item.id), text: String(item.name)}));
@@ -30,10 +32,18 @@ export const Filters: React.FC<Props> = ({ className }) => {
         <div className={className}>
             <Title text="Filters" size="sm" className="mb-5 font-bold" />
 
-            <div className="flex flex-col gap-4">
-                <FilterCheckbox name="name" text="Create your pizza" value="1" />
-                <FilterCheckbox name="name" text="New products" value="2" />
-            </div>
+            <CheckboxFiltersGroup 
+                title="Sizes"
+                name="sizes"
+                className="mb-5"
+                onClickCheckbox={toggleSizes}
+                selected={sizes}
+                items={[
+                    {text: '20 sm', value: '20'},
+                    {text: '30 sm', value: '30'},
+                    {text: '40 sm', value: '40'},
+                ]}
+            />
 
             <div className="mt-5 border-y border-y-neutral-100 pt-6 pb-7">
                 <p className="font-bold mb-3">Price:</p>
@@ -70,7 +80,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
                 items={items}
                 loading={loading}
                 onClickCheckbox={onAddId}
-                selectedIds={selectedIds}
+                selected={selectedIds}
             />
         </div>
     )
