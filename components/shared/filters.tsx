@@ -4,7 +4,7 @@ import React from "react";
 import { Title, FilterCheckbox, CheckboxFiltersGroup } from "./index";
 import { Input, RangeSlider } from "../ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
-import { useSearchParam, useSet } from "react-use";
+import { useSet } from "react-use";
 import qs from 'qs';
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -21,12 +21,17 @@ interface QueryFilters extends PriceProps {
     sizes: string;
     pizzaTypes: string;
     ingredients: string;
+    selectedIngredients: string;
 }
 
 export const Filters: React.FC<Props> = ({ className }) => {
     const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>;
     const router = useRouter();
-    const {ingredients, loading, onAddId, selectedIngredients} = useFilterIngredients();
+
+    const {ingredients, loading, onAddId, selectedIngredients} = useFilterIngredients(
+        searchParams.get('selectedIngredients')?.split(','),
+    );
+
     const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>(searchParams.get('sizes') ? searchParams.get('sizes')?.split(',') : []));
     const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>(searchParams.get('pizzaTypes') ? searchParams.get('pizzaTypes')?.split(',') : []));
     const [prices, setPrice] = React.useState<PriceProps>({
