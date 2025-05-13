@@ -4,9 +4,9 @@ import React from "react";
 import { Title, FilterCheckbox, CheckboxFiltersGroup } from "./index";
 import { Input, RangeSlider } from "../ui";
 import { useFilterIngredients } from "@/hooks/useFilterIngredients";
-import { useSet } from "react-use";
+import { useSearchParam, useSet } from "react-use";
 import qs from 'qs';
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
     className?: string;
@@ -17,12 +17,22 @@ interface PriceProps {
     priceTo?: number;
 }
 
+interface QueryFilters extends PriceProps {
+    sizes: string;
+    pizzaTypes: string;
+    ingredients: string;
+}
+
 export const Filters: React.FC<Props> = ({ className }) => {
+    const searchParams = useSearchParams() as unknown as Map<keyof QueryFilters, string>;
     const router = useRouter();
     const {ingredients, loading, onAddId, selectedIngredients} = useFilterIngredients();
-    const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>([]));
-    const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>([]));
-    const [prices, setPrice] = React.useState<PriceProps>({});
+    const [sizes, { toggle: toggleSizes }] = useSet(new Set<string>(searchParams.get('sizes') ? searchParams.get('sizes')?.split(',') : []));
+    const [pizzaTypes, { toggle: togglePizzaTypes }] = useSet(new Set<string>(searchParams.get('pizzaTypes') ? searchParams.get('pizzaTypes')?.split(',') : []));
+    const [prices, setPrice] = React.useState<PriceProps>({
+        priceFrom: Number(searchParams.get('priceFrom')) || 0,
+        priceTo: Number(searchParams.get('priceTo')) || 0,
+    });
 
     const items = ingredients.map(item => ({value: String(item.id), text: String(item.name)}));
 
@@ -40,7 +50,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
         const query = qs.stringify(filters, {arrayFormat: 'comma'});
 
-        router.push(`?${query}`);
+        router.push(`?${query}`, {scroll: false});
         
     }, [sizes, pizzaTypes, prices, selectedIngredients, router]);
 
