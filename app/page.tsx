@@ -1,7 +1,18 @@
 
 import { Container, Title, TopBar, Filters, ProductsGroupList } from "@/components/shared";
+import { prisma } from "@/prisma/prisma-client";
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          items: true,
+          ingredients: true,
+        },
+      },
+    },
+  });
 
   return (
     <>
@@ -18,148 +29,16 @@ export default function Home() {
 
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-                <ProductsGroupList title="Pizza" categoryId={1} items={[
-                  {
-                    id: 1,
-                    name: "Hawaiian Pizza",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                  {
-                    id: 2,
-                    name: "Hawaiian Pizza",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                  {
-                    id: 3,
-                    name: "Hawaiian Pizza",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                ]} />
-
-                <ProductsGroupList title="Combo" categoryId={2} items={[
-                  {
-                    id: 1,
-                    name: "Hawaiian Pizza",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                  {
-                    id: 2,
-                    name: "Hawaiian Pizza",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                  {
-                    id: 3,
-                    name: "Hawaiian Pizza",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/bela_misczela_37fd5dc0c5.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  }
-                ]} />
-                <ProductsGroupList title="Burgers" categoryId={4} items={[
-                  {
-                    id: 1,
-                    name: "Burger Polo",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/DSC_07855_50a520b0c2.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                  {
-                    id: 2,
-                    name: "Burger Polo",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/DSC_07855_50a520b0c2.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  },
-                  {
-                    id: 3,
-                    name: "Burger Polo",
-                    imageUrl: "https://adminbm.kharkiv.ua/uploads/DSC_07855_50a520b0c2.webp",
-                    items: [
-                      {
-                        id: 1,
-                        price: 390
-                      },
-                      {
-                        id: 2,
-                        price: 450
-                      }
-                    ],
-                  }  
-                ]} />
+              {categories.map((category) => (
+                category.products.length > 0 && (
+                  <ProductsGroupList
+                    key={category.id}
+                    title={category.name}
+                    categoryId={category.id}
+                    items={category.products}
+                  />
+                )
+              ))}
             </div>
           </div>
 
